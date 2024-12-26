@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Wheat Futures</title>
+    <style>
+        body {
+            font-family: "Arial Narrow", Arial, sans-serif;
+            margin: 10px;
+            background-color: #d7ffa7;
+            background-image: url('images/background_noise.gif');
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .product {
+            flex: 1 1 calc(50% - 20px); /* Two columns */
+            box-sizing: border-box;
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+        }
+
+        .size-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .size-buttons button {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .size-buttons button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Wheat Futures</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Stuff</a></li> </ul>
+    </nav>
+
+    <main>
+        <div class="product">
+            <img src="WebPlaceholders/AgriBlockMock.png" alt="Product 1">
+            <h2>Agricultural Blockchain Shirt</h2>
+            <p>Cotton, Short Sleeve<br>The Future Is Bright</p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholders/OneBilliMock.png" alt="Product 2">
+            <h2>I Made One Billion Shirt</h2>
+            <p>Cotton, Short Sleeve<br>The Future Is Bright</p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholders/GrainDayMock.png" alt="Product 3">
+            <h2>Grain Day Shirt</h2>
+            <p>Cotton, Short Sleeve<br>The Future Is Bright</p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholders/OneBilliInvertMock.png" alt="Product 4">
+            <h2>I Made One Billion Inverted Shirt</h2>
+            <p>Cotton, Short Sleeve<br>The Future Is Bright</p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
