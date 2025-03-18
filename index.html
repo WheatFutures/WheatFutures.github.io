@@ -93,9 +93,11 @@
     }
 
     .image-stack img {
-      max-width: 100%; /* Ensure the image is responsive and doesn't overflow */
-      height: auto;
+      max-width: 90%; /* Ensures the image stays centered and doesn't stretch */
       max-height: 500px; /* Limit the image height */
+      width: auto; /* Ensure aspect ratio is preserved */
+      height: auto;
+      margin: 0 auto; /* Centers the image horizontally */
     }
 
     /* Mobile Responsive Adjustments */
