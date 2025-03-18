@@ -2,118 +2,194 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wheat Futures</title>
   <style>
-    /* Set a very light beige background for the whole page */
+    /* Simulating Arial Narrow */
+    .narrow-text {
+      font-family: Arial, sans-serif;
+      letter-spacing: -0.5px;
+      font-stretch: condensed;
+      display: inline-block;
+    }
+
+    /* General styles */
     body {
-      background-color: #f5f5dc; /* light beige */
+      background-color: #f5fd69;
       margin: 0;
-      font-family: "Arial Narrow", Arial, sans-serif;
-    }
-    
-    /* Container uses flexbox to arrange menu and content side-by-side */
-    .container {
       display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    
-    /* Menu styling: left-aligned, with padding */
+
+    /* Menu container - Centered at the top */
+    .menu-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
     .menu {
-      padding: 20px;
-      width: 200px; /* Adjust width as needed */
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 15px; /* Space between buttons */
+      padding: 10px;
     }
-    
-    /* Common styling for all menu links */
-    .menu a {
+
+    /* Retro button style */
+    .retro-btn {
       text-decoration: none;
-      color: black;
-      display: block;
-      font-size: 20px; /* Relatively small text */
-      margin-bottom: 10px;
+      color: #222222;
+      background-color: #b5f0aa;
+      padding: 10px 15px;
+      border: 2px solid #000;
+      text-align: center;
+      font-size: 16px;
+      box-shadow: 3px 3px 0px #000;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      transform: scaleX(0.85);
     }
-    
-    /* Special styling for the title ("Wheat Futures") */
-    .menu a.title {
+
+    .retro-btn.title {
+      font-size: 20px;
       font-weight: bold;
-      font-size: 25px; /* Slightly larger for emphasis */
-      margin-bottom: 20px;
+      transform: scaleX(0.85);
     }
-    
-    /* Content area styling: area for dynamic image display */
+
+    .retro-btn:hover {
+      background-color: #30e9c7;
+    }
+
+    .retro-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000;
+    }
+
+    /* Content area */
     .content {
       flex-grow: 1;
       padding: 20px;
-      /* Additional styling (e.g., border) can be added here */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Stacked images styling */
+    .image-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; /* Spacing between images */
+      margin-top: 20px;
+    }
+
+    .image-stack img {
+      max-width: 500px;
+      height: auto;
+      max-height: 500px;
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .retro-btn {
+        margin-bottom: 5px;
+        width: 200px; /* Keep buttons consistent */
+      }
     }
   </style>
 </head>
-<body>
-  <!-- Main container: holds the menu and the content area -->
-  <div class="container">
-    <!-- Menu section on the left -->
+<body class="narrow-text"> <!-- Applying Arial Narrow Simulation to Entire Page -->
+
+  <!-- Menu at the top -->
+  <div class="menu-container">
     <div class="menu">
-      <!-- Title "Wheat Futures" in Arial Narrow Bold that links back to the homepage -->
-      <a href="/" class="title">Wheat Futures</a>
-      <!-- Other menu options -->
-      <a href="#" id="loadNewImage">Load New Image</a>
-      <a href="#" id="currentProduct">Current Product</a>
-      <a href="#" id="missionStatement">Mission Statement</a>
-      <!-- End of menu items -->
-    </div>
-    
-    <!-- Content section on the right -->
-    <div class="content" id="imageArea">
-      <!-- This area is reserved for displaying a random picture.
-           The image will appear here when "Load New Image" is clicked.
-      -->
+      <a href="/" class="retro-btn title narrow-text">Wheat Futures</a>
+      <a href="#" id="loadNewImage" class="retro-btn narrow-text">Random images</a>
+      <a href="#" id="currentProduct" class="retro-btn narrow-text">Purchase product</a>
+      <a href="#" id="missionStatement" class="retro-btn narrow-text">Mission statement</a>
     </div>
   </div>
 
-  <!-- JavaScript Section for loading a random image -->
+  <div class="content">
+    <!-- Stacked images area -->
+    <div id="imageStack" class="image-stack"></div>
+  </div>
+
   <script>
-    // Array of image file paths from the resources folder.
-    // Replace the placeholders with your actual image filenames.
     var imageFiles = [
       "resources/QuietMindMock.png",
       "resources/AgriBlockMock.png",
       "resources/GiftShopMock.png",
-      "resources/HeavenSentMock.png",
+      "resources/HeavenSentMock2.png",
       "resources/LibertyMock.png",
       "resources/LinguisticsMock.png",
       "resources/OneBilliMock.png",
-      "resources/WellsFargoMock.png"
-      // Add more image paths as needed.
+      "resources/WellsFargoMock.png",
+      "resources/GiftShopLongMock.png",
+      "resources/TechRationalMock.png",
+      "resources/EARTHDAY_MILAN.png",
+      //"resources/EARTHDAY_NYC.png",
+      "resources/OneBilliInvertMock.png",
+      //"resources/sun.png",
+      //"resources/barn.png",
+      //"resources/silo.png",
+      //"resources/hawk.png",
+      "resources/chinese.png",
+      //"resources/chinese_neuneu.png",
+      "resources/GrainDayMock.png"
     ];
 
-    // Function to load a random image into the imageArea div.
-    function loadRandomImage() {
-      // Ensure there are images available.
-      if (imageFiles.length === 0) {
-        console.log("No image files available.");
-        return;
+    // Function to get unique random images
+    function getUniqueRandomImages(count) {
+      let availableImages = [...imageFiles]; // Copy array to avoid modifying original
+      let selectedImages = [];
+
+      for (let i = 0; i < count; i++) {
+        if (availableImages.length === 0) break; // Prevent errors if not enough images
+
+        let randomIndex = Math.floor(Math.random() * availableImages.length);
+        selectedImages.push(availableImages[randomIndex]);
+        availableImages.splice(randomIndex, 1); // Remove selected image to prevent duplicates
       }
-      // Generate a random index based on the number of images.
-      var randomIndex = Math.floor(Math.random() * imageFiles.length);
-      var selectedImage = imageFiles[randomIndex];
 
-      // Create an image element.
-      var img = document.createElement("img");
-      img.src = selectedImage;
-      img.alt = "Random Image";
-      // Optionally, set responsive styling.
-      img.style.maxWidth = "100%";
-      img.style.height = "auto";
-
-      // Insert the image into the imageArea div, clearing any previous content.
-      var imageArea = document.getElementById("imageArea");
-      imageArea.innerHTML = ""; // Clear previous image/content.
-      imageArea.appendChild(img);
+      return selectedImages;
     }
 
-    // Add click event listener to the "Load New Image" menu option.
+    // Function to load and display 4 unique random images
+    function loadRandomImages() {
+      var imageStack = document.getElementById("imageStack");
+      imageStack.innerHTML = ""; // Clear previous images
+
+      let selectedImages = getUniqueRandomImages(4); // Get 4 unique images
+
+      selectedImages.forEach(imageSrc => {
+        let img = document.createElement("img");
+        img.src = imageSrc;
+        img.alt = "Random Image";
+        img.style.width = "500px";
+        img.style.height = "auto";
+        imageStack.appendChild(img);
+      });
+    }
+
+    // Event listener for button click
     document.getElementById("loadNewImage").addEventListener("click", function(e) {
-      e.preventDefault(); // Prevent default link behavior.
-      loadRandomImage();
+      e.preventDefault();
+      loadRandomImages();
     });
+
+    // Load images on page load
+    window.onload = function() {
+      loadRandomImages();
+    };
   </script>
 </body>
 </html>
