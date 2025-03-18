@@ -1,286 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - Wheat Futures</title>
-    <style>
-        body {
-            font-family: "Arial Narrow", Arial, sans-serif;
-            margin: 10px;
-            background-color: #d7ffa7;
-            background-image: url('images/background_noise.gif');
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wheat Futures</title>
+  <style>
+    /* Simulating Arial Narrow */
+    .narrow-text {
+      font-family: Arial, sans-serif;
+      letter-spacing: -0.5px;
+      font-stretch: condensed;
+      display: inline-block;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    /* General styles */
+    body {
+      background-color: #f5fd69;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
+    /* Menu container - Centered at the top */
+    .menu-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-        nav ul li {
-            display: inline;
-        }
+    .menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 15px; /* Space between buttons */
+      padding: 10px;
+    }
 
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
+    /* Retro button style */
+    .retro-btn {
+      text-decoration: none;
+      color: #222222;
+      background-color: #b5f0aa;
+      padding: 10px 15px;
+      border: 2px solid #000;
+      text-align: center;
+      font-size: 16px;
+      box-shadow: 3px 3px 0px #000;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      transform: scaleX(0.85);
+    }
 
-        .product {
-            flex: 1 1 calc(50% - 20px);
-            box-sizing: border-box;
-            background-color: #ffffff;
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .retro-btn.title {
+      font-size: 20px;
+      font-weight: bold;
+      transform: scaleX(0.85);
+    }
 
-        .product img {
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-            cursor: pointer;
-        }
+    .retro-btn:hover {
+      background-color: #30e9c7;
+    }
 
-        .size-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-top: 10px;
-        }
+    .retro-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000;
+    }
 
-        .size-buttons button {
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 5px 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    /* Content area */
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-        .size-buttons button:hover {
-            background-color: #f0f0f0;
-        }
+    /* Stacked images styling */
+    .image-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; /* Spacing between images */
+      margin-top: 20px;
+    }
 
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+    .image-stack img {
+      max-width: 500px;
+      height: auto;
+      max-height: 500px;
+    }
 
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-            border: 3px solid white;
-            border-radius: 10px;
-        }
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .modal .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-    </style>
+      .retro-btn {
+        margin-bottom: 5px;
+        width: 200px; /* Keep buttons consistent */
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="narrow-text"> <!-- Applying Arial Narrow Simulation to Entire Page -->
 
-    <header>
-        <h1>Wheat Futures</h1>
-    </header>
-
-    <nav>
-        <ul><b>Towards a Perfect Planet</b>
-            <li><a href="#">Cart</a></li> </ul>
-    </nav>
-
-    <main>
-        <div class="product">
-            <img src="WebPlaceholdersGIT/AgriBlockMock.png" alt="Product 1" data-hq="WebPlaceholdersGIT/AgriBlockMock.png">
-            <h2>Agricultural Blockchain Shirt</h2>
-            <p>Cotton, Short Sleeve<br></p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/GrainDayMock.png" alt="Product 2" data-hq="WebPlaceholdersGIT/GrainDayMock.png">
-            <h2>Grain Day North Dakota Shirt</h2>
-            <p>Cotton, Short Sleeve<br></p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/HeavenSentMock2.png" alt="Product 3" data-hq="WebPlaceholdersGIT/HeavenSentMock2.png">
-            <h2>Heaven Sent Agnes Denes Shirt</h2>
-            <p>Cotton, Short Sleeve<br></p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/LibertyMock.png" alt="Product 4" data-hq="WebPlaceholdersGIT/LibertyMock.png">
-            <h2>Sunshine and Happiness Logo Shirt</h2>
-            <p>Cotton, Short Sleeve<br></p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/OneBilliMock.png" alt="Product 5" data-hq="WebPlaceholdersGIT/OneBilliMock.png">
-            <h2>I Made One Billion Dollars Shirt</h2>
-            <p>Cotton, Short Sleeve<br></p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/OneBilliInvertMock.png" alt="Product 6" data-hq="WebPlaceholdersGIT/OneBilliInvertMock.png">
-            <h2>One Billion Dollars Inverted Shirt</h2>
-            <p>Cotton, Short Sleeve<br></p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/GiftShopMock.png" alt="Product 7" data-hq="WebPlaceholdersGIT/GiftShopMock.png">
-            <h2>Seeing Double Gift Shop Shirt</h2>
-            <p>Cotton, Short Sleeve<br>Front and Back</p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/GiftShopLongMock.png" alt="Product 8" data-hq="WebPlaceholdersGIT/GiftShopLongMock.png">
-            <h2>Seeing Double Gift Shop Long Shirt</h2>
-            <p>Cotton, Long Sleeve<br>Front and Back</p>
-            <p>Price: $60.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/WellsFargoMock.png" alt="Product 9" data-hq="WebPlaceholdersGIT/WellsFargoMock.png">
-            <h2>Multinational Financial Services Shirt with Bee Illustration</h2>
-            <p>Cotton, Short Sleeve<br>Front and Back</p>
-            <p>Price: $40.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-
-        <div class="product">
-            <img src="WebPlaceholdersGIT/QuietMindMock.png" alt="Product 10" data-hq="WebPlaceholdersGIT/QuietMindMock.png">
-            <h2>Quiet Mind Pure Heart Long Shirt</h2>
-            <p>Cotton, Long Sleeve<br>Front and Back</p>
-            <p>Price: $60.00</p>
-            <div class="size-buttons">
-                <button>S</button>
-                <button>M</button>
-                <button>L</button>
-                <button>XL</button>
-            </div>
-        </div>
-    </main>
-
-    <div class="modal" id="imageModal">
-        <span class="close">&times;</span>
-        <img src="" alt="High Quality Image" id="modalImage">
+  <!-- Menu at the top -->
+  <div class="menu-container">
+    <div class="menu">
+      <a href="/" class="retro-btn title narrow-text">Wheat Futures</a>
+      <a href="#" id="loadNewImage" class="retro-btn narrow-text">Random images</a>
+      <a href="#" id="currentProduct" class="retro-btn narrow-text">Purchase product</a>
+      <a href="#" id="missionStatement" class="retro-btn narrow-text">Mission statement</a>
     </div>
+  </div>
 
-    <script>
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModal = document.querySelector('.modal .close');
+  <div class="content">
+    <!-- Stacked images area -->
+    <div id="imageStack" class="image-stack"></div>
+  </div>
 
-        document.querySelectorAll('.product img').forEach(img => {
-            img.addEventListener('click', () => {
-                modalImage.src = img.dataset.hq || img.src;
-                modal.style.display = 'flex';
-            });
-        });
+  <script>
+    var imageFiles = [
+      "resources/QuietMindMock.png",
+      "resources/AgriBlockMock.png",
+      "resources/GiftShopMock.png",
+      "resources/HeavenSentMock2.png",
+      "resources/LibertyMock.png",
+      "resources/LinguisticsMock.png",
+      "resources/OneBilliMock.png",
+      "resources/WellsFargoMock.png",
+      "resources/GiftShopLongMock.png",
+      "resources/TechRationalMock.png",
+      "resources/EARTHDAY_MILAN.png",
+      //"resources/EARTHDAY_NYC.png",
+      "resources/OneBilliInvertMock.png",
+      //"resources/sun.png",
+      //"resources/barn.png",
+      //"resources/silo.png",
+      //"resources/hawk.png",
+      "resources/chinese.png",
+      //"resources/chinese_neuneu.png",
+      "resources/GrainDayMock.png"
+    ];
 
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+    // Function to get unique random images
+    function getUniqueRandomImages(count) {
+      let availableImages = [...imageFiles]; // Copy array to avoid modifying original
+      let selectedImages = [];
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    </script>
+      for (let i = 0; i < count; i++) {
+        if (availableImages.length === 0) break; // Prevent errors if not enough images
 
-    <header>
-        <h1>PLACEHOLDER WEBSITE<br>WHEAT FUTURES COMING SOON</h1>
-    </header>
+        let randomIndex = Math.floor(Math.random() * availableImages.length);
+        selectedImages.push(availableImages[randomIndex]);
+        availableImages.splice(randomIndex, 1); // Remove selected image to prevent duplicates
+      }
 
+      return selectedImages;
+    }
+
+    // Function to load and display 4 unique random images
+    function loadRandomImages() {
+      var imageStack = document.getElementById("imageStack");
+      imageStack.innerHTML = ""; // Clear previous images
+
+      let selectedImages = getUniqueRandomImages(4); // Get 4 unique images
+
+      selectedImages.forEach(imageSrc => {
+        let img = document.createElement("img");
+        img.src = imageSrc;
+        img.alt = "Random Image";
+        img.style.width = "500px";
+        img.style.height = "auto";
+        imageStack.appendChild(img);
+      });
+    }
+
+    // Event listener for button click
+    document.getElementById("loadNewImage").addEventListener("click", function(e) {
+      e.preventDefault();
+      loadRandomImages();
+    });
+
+    // Load images on page load
+    window.onload = function() {
+      loadRandomImages();
+    };
+  </script>
 </body>
 </html>

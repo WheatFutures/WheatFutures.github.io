@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Wheat Futures</title>
+    <style>
+        body {
+            font-family: "Arial Narrow", Arial, sans-serif;
+            margin: 10px;
+            background-color: #d7ffa7;
+            background-image: url('images/background_noise.gif');
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .product {
+            flex: 1 1 calc(50% - 20px);
+            box-sizing: border-box;
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            cursor: pointer;
+        }
+
+        .size-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .size-buttons button {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .size-buttons button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 3px solid white;
+            border-radius: 10px;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Wheat Futures</h1>
+    </header>
+
+    <nav>
+        <ul><b>Towards a Perfect Planet</b>
+            <li><a href="#">Cart</a></li> </ul>
+    </nav>
+
+    <main>
+        <div class="product">
+            <img src="WebPlaceholdersGIT/AgriBlockMock.png" alt="Product 1" data-hq="WebPlaceholdersGIT/AgriBlockMock.png">
+            <h2>Agricultural Blockchain Shirt</h2>
+            <p>Cotton, Short Sleeve<br></p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/GrainDayMock.png" alt="Product 2" data-hq="WebPlaceholdersGIT/GrainDayMock.png">
+            <h2>Grain Day North Dakota Shirt</h2>
+            <p>Cotton, Short Sleeve<br></p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/HeavenSentMock2.png" alt="Product 3" data-hq="WebPlaceholdersGIT/HeavenSentMock2.png">
+            <h2>Heaven Sent Agnes Denes Shirt</h2>
+            <p>Cotton, Short Sleeve<br></p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/LibertyMock.png" alt="Product 4" data-hq="WebPlaceholdersGIT/LibertyMock.png">
+            <h2>Sunshine and Happiness Logo Shirt</h2>
+            <p>Cotton, Short Sleeve<br></p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/OneBilliMock.png" alt="Product 5" data-hq="WebPlaceholdersGIT/OneBilliMock.png">
+            <h2>I Made One Billion Dollars Shirt</h2>
+            <p>Cotton, Short Sleeve<br></p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/OneBilliInvertMock.png" alt="Product 6" data-hq="WebPlaceholdersGIT/OneBilliInvertMock.png">
+            <h2>One Billion Dollars Inverted Shirt</h2>
+            <p>Cotton, Short Sleeve<br></p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/GiftShopMock.png" alt="Product 7" data-hq="WebPlaceholdersGIT/GiftShopMock.png">
+            <h2>Seeing Double Gift Shop Shirt</h2>
+            <p>Cotton, Short Sleeve<br>Front and Back</p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/GiftShopLongMock.png" alt="Product 8" data-hq="WebPlaceholdersGIT/GiftShopLongMock.png">
+            <h2>Seeing Double Gift Shop Long Shirt</h2>
+            <p>Cotton, Long Sleeve<br>Front and Back</p>
+            <p>Price: $60.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/WellsFargoMock.png" alt="Product 9" data-hq="WebPlaceholdersGIT/WellsFargoMock.png">
+            <h2>Multinational Financial Services Shirt with Bee Illustration</h2>
+            <p>Cotton, Short Sleeve<br>Front and Back</p>
+            <p>Price: $40.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="WebPlaceholdersGIT/QuietMindMock.png" alt="Product 10" data-hq="WebPlaceholdersGIT/QuietMindMock.png">
+            <h2>Quiet Mind Pure Heart Long Shirt</h2>
+            <p>Cotton, Long Sleeve<br>Front and Back</p>
+            <p>Price: $60.00</p>
+            <div class="size-buttons">
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="imageModal">
+        <span class="close">&times;</span>
+        <img src="" alt="High Quality Image" id="modalImage">
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.modal .close');
+
+        document.querySelectorAll('.product img').forEach(img => {
+            img.addEventListener('click', () => {
+                modalImage.src = img.dataset.hq || img.src;
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+    <header>
+        <h1>PLACEHOLDER WEBSITE<br>WHEAT FUTURES COMING SOON</h1>
+    </header>
+
+</body>
+</html>
