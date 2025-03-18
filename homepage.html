@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wheat Futures</title>
+  <style>
+    /* Set a very light beige background for the whole page */
+    body {
+      background-color: #f5f5dc; /* light beige */
+      margin: 0;
+      font-family: "Arial Narrow", Arial, sans-serif;
+    }
+    
+    /* Container uses flexbox to arrange menu and content side-by-side */
+    .container {
+      display: flex;
+    }
+    
+    /* Menu styling: left-aligned, with padding */
+    .menu {
+      padding: 20px;
+      width: 200px; /* Adjust width as needed */
+    }
+    
+    /* Common styling for all menu links */
+    .menu a {
+      text-decoration: none;
+      color: black;
+      display: block;
+      font-size: 20px; /* Relatively small text */
+      margin-bottom: 10px;
+    }
+    
+    /* Special styling for the title ("Wheat Futures") */
+    .menu a.title {
+      font-weight: bold;
+      font-size: 25px; /* Slightly larger for emphasis */
+      margin-bottom: 20px;
+    }
+    
+    /* Content area styling: area for dynamic image display */
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      /* Additional styling (e.g., border) can be added here */
+    }
+  </style>
+</head>
+<body>
+  <!-- Main container: holds the menu and the content area -->
+  <div class="container">
+    <!-- Menu section on the left -->
+    <div class="menu">
+      <!-- Title "Wheat Futures" in Arial Narrow Bold that links back to the homepage -->
+      <a href="/" class="title">Wheat Futures</a>
+      <!-- Other menu options -->
+      <a href="#" id="loadNewImage">Load New Image</a>
+      <a href="#" id="currentProduct">Current Product</a>
+      <a href="#" id="missionStatement">Mission Statement</a>
+      <!-- End of menu items -->
+    </div>
+    
+    <!-- Content section on the right -->
+    <div class="content" id="imageArea">
+      <!-- This area is reserved for displaying a random picture.
+           The image will appear here when "Load New Image" is clicked.
+      -->
+    </div>
+  </div>
+
+  <!-- JavaScript Section for loading a random image -->
+  <script>
+    // Array of image file paths from the resources folder.
+    // Replace the placeholders with your actual image filenames.
+    var imageFiles = [
+      "resources/QuietMindMock.png",
+      "resources/AgriBlockMock.png",
+      "resources/GiftShopMock.png",
+      "resources/HeavenSentMock.png",
+      "resources/LibertyMock.png",
+      "resources/LinguisticsMock.png",
+      "resources/OneBilliMock.png",
+      "resources/WellsFargoMock.png"
+      // Add more image paths as needed.
+    ];
+
+    // Function to load a random image into the imageArea div.
+    function loadRandomImage() {
+      // Ensure there are images available.
+      if (imageFiles.length === 0) {
+        console.log("No image files available.");
+        return;
+      }
+      // Generate a random index based on the number of images.
+      var randomIndex = Math.floor(Math.random() * imageFiles.length);
+      var selectedImage = imageFiles[randomIndex];
+
+      // Create an image element.
+      var img = document.createElement("img");
+      img.src = selectedImage;
+      img.alt = "Random Image";
+      // Optionally, set responsive styling.
+      img.style.maxWidth = "100%";
+      img.style.height = "auto";
+
+      // Insert the image into the imageArea div, clearing any previous content.
+      var imageArea = document.getElementById("imageArea");
+      imageArea.innerHTML = ""; // Clear previous image/content.
+      imageArea.appendChild(img);
+    }
+
+    // Add click event listener to the "Load New Image" menu option.
+    document.getElementById("loadNewImage").addEventListener("click", function(e) {
+      e.preventDefault(); // Prevent default link behavior.
+      loadRandomImage();
+    });
+  </script>
+</body>
+</html>
