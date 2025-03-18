@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Please Read</title>
+  <style>
+    /* Simulating Arial Narrow */
+    .narrow-text {
+      font-family: Arial, sans-serif;
+      letter-spacing: -0.5px;
+      font-stretch: condensed;
+      display: inline-block;
+    }
+
+    /* General styles */
+    body {
+      background-color: #ffffff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    /* Menu container - Centered at the top */
+    .menu-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      overflow-x: hidden;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 10px;
+      max-width: 100%;
+    }
+
+    /* Retro button style */
+    .retro-btn {
+      text-decoration: none;
+      color: #222222;
+      background-color: #39FF14;
+      padding: 10px 25px;
+      border: 2px solid #000;
+      text-align: center;
+      font-size: 16px;
+      box-shadow: 3px 3px 0px #000;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      border-radius: 50px;
+    }
+
+    .retro-btn.title {
+      font-size: 20px;
+      font-weight: bold;
+      transform: scaleY(1.1);
+      transform: scaleX(0.9);
+    }
+
+    .retro-btn:hover {
+      background-color: #ffffff;
+    }
+
+    .retro-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #000;
+    }
+
+    /* Content area for text */
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .text-container {
+      background-color: #f8f8f8;
+      padding: 20px;
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0px #000;
+      text-align: left;
+      font-size: 18px;
+      line-height: 1.6;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 768px) {
+      .menu-container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        padding: 0;
+      }
+
+      .retro-btn {
+        margin: 10px;
+        width: auto;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="narrow-text">
+
+  <!-- Menu at the top -->
+  <div class="menu-container">
+    <div class="menu">
+      <a href="index.html" class="retro-btn title narrow-text">Wheat Futures</a>
+      <a href="#" class="retro-btn narrow-text">random images</a>
+      <a href="#" class="retro-btn narrow-text">purchase product</a>
+      <a href="pleaseread.html" id="Please read" class="retro-btn narrow-text">please read</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- Text Container -->
+    <div class="text-container">
+      <h2>Dear Customer</h2>
+      <p>
+        We sell Clothings   No returns please   No refunds please   Contact @wheatfutures on Instant Gram with concerns .
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

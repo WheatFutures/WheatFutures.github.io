@@ -15,7 +15,7 @@
 
     /* General styles */
     body {
-      background-color: #f3fd25;
+      background-color: #ffffff;
       margin: 0;
       display: flex;
       flex-direction: column;
@@ -23,6 +23,22 @@
       overflow-x: hidden; /* Prevents horizontal scrolling */
       max-width: 100vw; /* Ensures page doesn't exceed viewport width */
     }
+/* 
+    body::before {
+      content: "";
+      position: fixed; /* Ensures it stays on top 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('resources/wheat_enhanced.png'); /* Path to your PNG 
+      background-size: cover;  /* Adjust to fit the screen 
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 1; /* Adjust transparency 
+      pointer-events: none; /* Prevents interaction 
+      z-index: 1; /* Ensures it's on top 
+    } */
 
     /* Menu container - Centered at the top */
     .menu-container {
@@ -48,23 +64,26 @@
     .retro-btn {
       text-decoration: none;
       color: #222222;
-      background-color: #b8bfc3;
-      padding: 10px 15px;
+      background-color: #dbf73c;
+      padding: 10px 25px; /* Increase horizontal padding for oval shape */
       border: 2px solid #000;
       text-align: center;
       font-size: 16px;
       box-shadow: 3px 3px 0px #000;
       transition: background-color 0.2s ease, transform 0.1s ease;
-      flex-shrink: 0; /* Prevents buttons from shrinking too small */
+      border-radius: 50px; /* Makes the button oval */
     }
+
 
     .retro-btn.title {
       font-size: 20px;
       font-weight: bold;
+      transform: scaleY(1.1);
+      transform: scaleX(0.9);
     }
 
     .retro-btn:hover {
-      background-color: #85b588;
+      background-color: #ffffff;
     }
 
     .retro-btn:active {
@@ -114,13 +133,12 @@
         flex-wrap: wrap; /* Allow buttons to wrap onto multiple lines */
         justify-content: center;
         align-items: center;
-        width: 100%;
+        width: 80%;
         padding: 0;
       }
 
       .retro-btn {
-        margin: 5px;
-        padding: 10px 15px;
+        margin: 10px;
         width: auto; /* Allow natural width */
         text-align: center;
       }
@@ -143,10 +161,10 @@
   <!-- Menu at the top -->
   <div class="menu-container">
     <div class="menu">
-      <a href="/" class="retro-btn title narrow-text">Wheat Futures</a>
-      <a href="#" id="loadNewImage" class="retro-btn narrow-text">Random images</a>
-      <a href="#" id="currentProduct" class="retro-btn narrow-text">Purchase product</a>
-      <a href="#" id="missionStatement" class="retro-btn narrow-text">Mission statement</a>
+      <a href="index.html" class="retro-btn title narrow-text">Wheat Futures</a>
+      <a href="#" id="loadNewImage" class="retro-btn narrow-text">random images</a>
+      <a href="#" id="currentProduct" class="retro-btn narrow-text">purchase product</a>
+      <a href="pleaseread.html" id="Please read" class="retro-btn narrow-text">please read</a>
     </div>
   </div>
 
@@ -167,30 +185,39 @@
       "resources/WellsFargoMock.png",
       "resources/GiftShopLongMock.png",
       "resources/TechRationalMock.png",
-      "resources/EARTHDAY_MILAN.png",
+      //"resources/EARTHDAY_MILAN.png",
       //"resources/EARTHDAY_NYC.png",
-      "resources/OneBilliInvertMock.png",
+      //"resources/OneBilliInvertMock.png",
       //"resources/sun.png",
       //"resources/barn.png",
       //"resources/silo.png",
       //"resources/hawk.png",
-      "resources/chinese.png",
+      //"resources/chinese.png",
       //"resources/chinese_neuneu.png",
-      "resources/GrainDayMock.png"
+      //"resources/GrainDayMock.png"
     ];
 
-    // Function to get unique random images
+    var lastDisplayedImages = []; // Store the last set of images
+
+    // Function to get 4 unique random images, avoiding the last displayed set
     function getUniqueRandomImages(count) {
-      let availableImages = [...imageFiles]; // Copy array to avoid modifying original
+      let availableImages = imageFiles.filter(img => !lastDisplayedImages.includes(img)); // Exclude last displayed
       let selectedImages = [];
 
+      // If not enough unique images left, allow all images again
+      if (availableImages.length < count) {
+        availableImages = [...imageFiles]; // Reset the available images list
+      }
+
       for (let i = 0; i < count; i++) {
-        if (availableImages.length === 0) break; // Prevent errors if not enough images
+        if (availableImages.length === 0) break; 
 
         let randomIndex = Math.floor(Math.random() * availableImages.length);
         selectedImages.push(availableImages[randomIndex]);
         availableImages.splice(randomIndex, 1); // Remove selected image to prevent duplicates
       }
+
+      lastDisplayedImages = selectedImages; // Update the last displayed set
 
       return selectedImages;
     }
@@ -200,7 +227,7 @@
       var imageStack = document.getElementById("imageStack");
       imageStack.innerHTML = ""; // Clear previous images
 
-      let selectedImages = getUniqueRandomImages(4); // Get 4 unique images
+      let selectedImages = getUniqueRandomImages(3); // Get 4 unique images
 
       selectedImages.forEach(imageSrc => {
         let img = document.createElement("img");
