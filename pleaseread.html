@@ -45,16 +45,19 @@
 
     /* Retro button style */
     .retro-btn {
+      display: inline-block;
+      height: 50px;              /* Set a fixed height */
+      padding: 0 30px;           /* Add horizontal padding */
+      line-height: 50px;         /* Vertically center the text */
+      border: 2px solid #000;
+      background-color: #39FF14;
+      font-size: 16px;
       text-decoration: none;
       color: #222222;
-      background-color: #39FF14;
-      padding: 10px 25px;
-      border: 2px solid #000;
-      text-align: center;
-      font-size: 16px;
       box-shadow: 3px 3px 0px #000;
       transition: background-color 0.2s ease, transform 0.1s ease;
-      border-radius: 50px;
+      /* Apply an elliptical border radius */
+      border-radius: 60% / 60%;
     }
 
     .retro-btn.title {
@@ -142,7 +145,7 @@
   <div class="menu-container">
     <div class="menu">
       <a href="index.html" class="retro-btn title narrow-text">Wheat Futures</a>
-      <a href="#" class="retro-btn narrow-text">purchase product</a>
+      <a href="#" class="retro-btn narrow-text">Purchase product</a>
     </div>
   </div>
 
